@@ -15,7 +15,7 @@ async def main():
     ------------------
 """
     )
-    await call_py.join_chat(GROUP_ID)
+    await call_py.str(GROUP_ID)
     await call_py.send_message(GROUP_ID, "I Used Your Code For Music")
     await idle()
     await arq.close()
