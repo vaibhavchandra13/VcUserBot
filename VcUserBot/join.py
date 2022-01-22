@@ -4,10 +4,10 @@ import random
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR, bot
+from config import HNDLR, bot, SUDO_USERS
 
 
-@Client.on_message(filters.command(["join"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["join"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def join(client: Client, m: Message):
   msg = await m.reply_text("Join Chat...")
   chaturl = m.text.split(None, 1)[1]
