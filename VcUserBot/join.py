@@ -11,5 +11,5 @@ from config import HNDLR, bot
 async def join(client: Client, m: Message):
   msg = await m.reply_text("Join Chat...")
   chaturl = m.text.split(None, 1)[1]
-  client.join_chat(chaturl)
+  await client.join_chat(chaturl)
   await msg.edit("Joined...")
