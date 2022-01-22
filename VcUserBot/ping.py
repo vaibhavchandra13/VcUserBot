@@ -29,7 +29,7 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message(filters.command(["ping"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["ping"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def ping(client, m: Message):
     start = time()
     current_time = datetime.utcnow()
@@ -61,25 +61,4 @@ async def restart(client, m: Message):
     quit()
 
 
-@Client.on_message(filters.command(["Good morning", "Gud morning", "gud mrng", "ഗുഡ് മോർണിംഗ്"], prefixes=f"{HNDLR}"))
-async def goodmorning(client, m: Message):
-    GM = f"""
-<i>🍂☕️Gøød Mørning..⏱️ Have a nice day..🙂</i>
-"""
-    await m.reply(GM)
 
-
-@Client.on_message(filters.command(["Good Evening", "Gud evng", "gud evening", "ഗുഡ് ഈവനിംഗ്", "ഗുഡ് ഈവെനിംഗ്"], prefixes=f"{HNDLR}"))
-async def goodevening(client, m: Message):
-    GE = f"""
-<i> 😁Gøød Evening..☕️</i>
-"""
-    await m.reply(GE)
-
-
-@Client.on_message(filters.command(["Good Night", "Gud nt", "gud night", "ഗുഡ് നൈറ്റ്‌", "gudnyt"], prefixes=f"{HNDLR}"))
-async def goodnight(client, m: Message):
-    GN = f"""
-<i> 😴🛌Gøød Night 🌚</i>
-"""
-    await m.reply(GN)
