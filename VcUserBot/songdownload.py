@@ -14,10 +14,10 @@ from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 
-from config import HNDLR
+from config import HNDLR, SUDO_USERS
 
 
-@Client.on_message(filters.command(["dlsong", "dlmusic"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["dlsong", "dlmusic"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def song(client, message: Message):
     urlissed = get_text(message)
     if not urlissed:
@@ -233,7 +233,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(filters.command(["vsong", "dlvideo"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["vsong", "dlvideo"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
