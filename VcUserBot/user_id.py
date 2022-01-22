@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR
+from config import HNDLR, SUDO_USERS
 from VcUserBot.helpers.get_file_id import get_file_id
 
 
