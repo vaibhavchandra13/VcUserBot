@@ -1,13 +1,13 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR, call_py
+from config import HNDLR, call_py, SUDO_USERS
 from VcUserBot.helpers.decorators import authorized_users_only
 from VcUserBot.helpers.handlers import skip_current_song, skip_item
 from VcUserBot.helpers.queues import QUEUE, clear_queue
 
 
-@Client.on_message(filters.command(["skip"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["skip"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def skip(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
@@ -40,7 +40,7 @@ async def skip(client, m: Message):
             await m.reply(OP)
 
 
-@Client.on_message(filters.command(["end", "stop"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["end", "stop"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def stop(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
@@ -55,7 +55,7 @@ async def stop(client, m: Message):
         await m.reply("**🤨Nothing is playing !**")
 
 
-@Client.on_message(filters.command(["pause"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["pause"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def pause(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
@@ -71,7 +71,7 @@ async def pause(client, m: Message):
         await m.reply("**🤨Nothing is playing!**")
 
 
-@Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}"))
+@Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def resume(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
