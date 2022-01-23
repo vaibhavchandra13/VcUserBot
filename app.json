@@ -22,6 +22,11 @@
             "required": false,
             "value": ""
         },
+        "CHATS": {
+            "description": "Private Chats IDS",
+            "required": false,
+            "value": ""
+        },
         "API_HASH": {
             "description": "Your api hash from my.telegram.org/apps",
             "required": false
