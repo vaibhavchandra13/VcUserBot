@@ -6,7 +6,7 @@ from time import time
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR, SUDO_USERS
+from config import HNDLR, SUDO_USERS, CHATS
 
 # System Uptime
 START_TIME = datetime.utcnow()
@@ -29,8 +29,11 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message(filters.command(["ping"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["ping"], prefixes=f"{HNDLR}"))
 async def ping(client, m: Message):
+    chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
     start = time()
     current_time = datetime.utcnow()
     m_reply = await m.reply_text("⚡")
