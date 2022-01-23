@@ -14,11 +14,14 @@ from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 
-from config import HNDLR, SUDO_USERS
+from config import HNDLR, SUDO_USERS, CHATS
 
 
-@Client.on_message(filters.command(["dlsong", "dlmusic"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["dlsong", "dlmusic"], prefixes=f"{HNDLR}"))
 async def song(client, message: Message):
+    chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
     urlissed = get_text(message)
     if not urlissed:
         await client.send_message(
@@ -236,7 +239,9 @@ def time_to_seconds(time):
 @Client.on_message(filters.command(["vsong", "dlvideo"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
-
+    chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
     pablo = await client.send_message(
         message.chat.id, f"**🔎 Searching video 🎞..** `{urlissed}`"
     )
