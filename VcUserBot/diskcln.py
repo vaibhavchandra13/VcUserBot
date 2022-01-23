@@ -12,9 +12,9 @@ async def cleardisk(client, m: Message):
     if ls_dir:
         for file in os.listdir(downloads):
             os.remove(os.path.join(downloads, file))
-        await message.reply_text("**Removed All Downloads**")
+        await m.reply_text("**Removed All Downloads**")
     else:
-        await message.reply_text("**NO FILES FOUND**")
+        await m.reply_text("**NO FILES FOUND**")
         
         
 @Client.on_message(filters.command(["clearjpg"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
@@ -24,6 +24,6 @@ async def clearjpg(client, m: Message):
     if ls_dir:
         for dta in os.listdir(pth):
             os.system("rm -rf *.jpg")
-        await message.reply_text("**Removed All JPG Files**")
+        await m.reply_text("**Removed All JPG Files**")
     else:
-        await message.reply_text("**NO FILES FOUND**")
+        await m.reply_text("**NO FILES FOUND**")
