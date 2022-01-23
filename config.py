@@ -23,3 +23,23 @@ contact_filter = filters.create(
 
 bot = Client(SESSION, API_ID, API_HASH, plugins=dict(root="VcUserBot"))
 call_py = PyTgCalls(bot)
+
+
+#info 
+myinfo = botget_me()
+BOT_ID = myinfo.id
+BOT_NAME = myinfo.first_name
+BOT_USERNAME = myinfo.username
+BOT_DC_ID = myinfo.dc_id
+if myinfo.last_name:
+    BOT_NAME = myinfo.first_name + " " + myinfo.last_name
+else:
+    BOT_NAME = myinfo.first_name
+    
+
+# sudo
+for BOT_ID in SUDO_USERS:
+    if BOT_ID in SUDO_USERS:
+        pass
+    else:
+        SUDO_USERS.append(BOT_ID)
