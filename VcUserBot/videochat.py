@@ -13,7 +13,7 @@ from pytgcalls.types.input_stream.quality import (
 )
 from youtubesearchpython import VideosSearch
 
-from config import HNDLR, bot, call_py, SUDO_USERS
+from config import HNDLR, bot, call_py, SUDO_USERS, CHATS
 from VcUserBot.helpers.queues import QUEUE, add_to_queue, get_queue
 
 BrayDan = [
@@ -95,10 +95,13 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(filters.command(["play"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["play"], prefixes=f"{HNDLR}"))
 async def play(client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     m.chat.title
     if replied:
         if replied.audio or replied.voice:
@@ -118,7 +121,7 @@ async def play(client, m: Message):
                 await huehue.delete()
                 # await m.reply_to_message.delete()
                 await m.reply_photo(
-                    photo="https://telegra.ph/file/d6f92c979ad96b2031cba.png",
+                    photo="https://telegra.ph/file/c7baf717f2c4c23d3b6c4.jpg",
                     caption=f"""
 **#⃣ Song added▪️Position {pos}
 🏷️ Name: {songname}
@@ -138,7 +141,7 @@ async def play(client, m: Message):
                 await huehue.delete()
                 # await m.reply_to_message.delete()
                 await m.reply_photo(
-                    photo="https://telegra.ph/file/6213d2673486beca02967.png",
+                    photo="https://telegra.ph/file/c7baf717f2c4c23d3b6c4.jpg",
                     caption=f"""
 **▶ Playing song
 🏷️ Name: {songname}
@@ -202,10 +205,13 @@ async def play(client, m: Message):
                             await huehue.edit(f"`{ep}`")
 
 
-@Client.on_message(filters.command(["vplay"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["vplay"], prefixes=f"{HNDLR}"))
 async def vplay(client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     m.chat.title
     if replied:
         if replied.video or replied.document:
@@ -235,7 +241,7 @@ async def vplay(client, m: Message):
                 await huehue.delete()
                 # await m.reply_to_message.delete()
                 await m.reply_photo(
-                    photo="https://telegra.ph/file/d6f92c979ad96b2031cba.png",
+                    photo="https://telegra.ph/file/c7baf717f2c4c23d3b6c4.jpg",
                     caption=f"""
 **#⃣ Vedio added▪️Position {pos}
 🏷️ Name: {songname}
@@ -259,7 +265,7 @@ async def vplay(client, m: Message):
                 await huehue.delete()
                 # await m.reply_to_message.delete()
                 await m.reply_photo(
-                    photo="https://telegra.ph/file/6213d2673486beca02967.png",
+                    photo="https://telegra.ph/file/c7baf717f2c4c23d3b6c4.jpg",
                     caption=f"""
 **▶ Start Playing Video
 🏷️ Name: {songname}
@@ -325,9 +331,12 @@ async def vplay(client, m: Message):
                             await huehue.edit(f"`{ep}`")
 
 
-@Client.on_message(filters.command(["playfrom"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["playfrom"], prefixes=f"{HNDLR}"))
 async def playfrom(client, m: Message):
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if len(m.command) < 2:
         await m.reply(
             f"**😹Use:** \n\n`{HNDLR}playfrom [chat_id/username]` \n`{HNDLR}playfrom [chat_id/username]`"
@@ -362,7 +371,7 @@ async def playfrom(client, m: Message):
                     add_to_queue(chat_id, songname, location, link, "Audio", 0)
                     # await m.reply_to_message.delete()
                     await m.reply_photo(
-                        photo="https://telegra.ph/file/6213d2673486beca02967.png",
+                        photo="https://telegra.ph/file/c7baf717f2c4c23d3b6c4.jpg",
                         caption=f"""
 **▶ Start Playing Songs From {chat}
 🏷️ Name: {songname}
@@ -378,9 +387,12 @@ async def playfrom(client, m: Message):
             await hmm.edit(f"**ERROR** \n`{e}`")
 
 
-@Client.on_message(filters.command(["playlist", "queue"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["playlist", "queue"], prefixes=f"{HNDLR}"))
 async def playlist(client, m: Message):
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if chat_id in QUEUE:
         chat_queue = get_queue(chat_id)
         if len(chat_queue) == 1:
