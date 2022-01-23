@@ -1,16 +1,19 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import HNDLR, call_py, SUDO_USERS
+from config import HNDLR, call_py, SUDO_USERS, CHATS
 from VcUserBot.helpers.decorators import authorized_users_only
 from VcUserBot.helpers.handlers import skip_current_song, skip_item
 from VcUserBot.helpers.queues import QUEUE, clear_queue
 
 
-@Client.on_message(filters.command(["skip"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["skip"], prefixes=f"{HNDLR}"))
 async def skip(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
@@ -40,10 +43,13 @@ async def skip(client, m: Message):
             await m.reply(OP)
 
 
-@Client.on_message(filters.command(["end", "stop"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["end", "stop"], prefixes=f"{HNDLR}"))
 async def stop(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if chat_id in QUEUE:
         try:
             await call_py.leave_group_call(chat_id)
@@ -55,10 +61,13 @@ async def stop(client, m: Message):
         await m.reply("**🤨Nothing is playing !**")
 
 
-@Client.on_message(filters.command(["pause"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["pause"], prefixes=f"{HNDLR}"))
 async def pause(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if chat_id in QUEUE:
         try:
             await call_py.pause_stream(chat_id)
@@ -71,10 +80,13 @@ async def pause(client, m: Message):
         await m.reply("**🤨Nothing is playing!**")
 
 
-@Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
+@Client.on_message(filters.command(["resume"], prefixes=f"{HNDLR}"))
 async def resume(client, m: Message):
     await m.delete()
     chat_id = m.chat.id
+    if not await CHATS:
+        await message.reply_text(f"**This is A Music Bot Made Only for Private Use in Some Specific Chats**")
+        return await Client.leave_chat(chat_id) 
     if chat_id in QUEUE:
         try:
             await call_py.resume_stream(chat_id)
