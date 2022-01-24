@@ -34,6 +34,7 @@ RESTARTING_APP = "Re-Starting Heroku"
 async def updater(client: Client, m: Message):
     status_message = await m.reply_text("Wait...")
     active_branch_name = repo.active_branch.name
+    repo = git.Repo.init()
     if HEROKU_API_KEY is not None:
         import heroku3
         heroku = heroku3.from_key(HEROKU_API_KEY)
