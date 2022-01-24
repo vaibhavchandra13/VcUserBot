@@ -1,18 +1,20 @@
 from pyrogram import Client, emoji, filters
 from config import HNDLR, SUDO_USERS
 from pyrogram.types import Message
-import os
+import os, glob
+ 
+dir = 'path/to/dir'
 
-downloads = os.path.realpath("downloads")
+
+downloads = "./Downloads"
 raw = os.path.realpath("raw_files")
 
 @Client.on_message(filters.command(["cleardl"], prefixes=f"{HNDLR}") & filters.user(SUDO_USERS))
 async def cleardisk(client, m: Message):
-    ls_dir = os.listdir(downloads)
-    if ls_dir:
-        for file in os.listdir(downloads):
-            os.remove(os.path.join(downloads, file))
-        await m.reply_text("**Removed All Downloads**")
+    if downloads:
+        for file in os.scandir(downloads):
+            os.remove(file.path)
+            await m.reply_text("**Removed All Downloads**")
     else:
         await m.reply_text("**NO FILES FOUND**")
         
