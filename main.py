@@ -2,13 +2,14 @@ import asyncio
 import os
 from pytgcalls import idle
 
-from config import call_py
+from config import call_py, bot
 
 
 
 
 
 async def main():
+    await bot.run()
     await call_py.start()
     print(
         """
