@@ -2,7 +2,7 @@ import asyncio
 import os
 import git
 from pyrogram import Client, filters
-from pyrogram.types import 
+from pyrogram.types import Message
 from config import bot, HNDLR, SUDO_USERS, HEROKU_API_KEY, OFFICIAL_UPSTREAM_REPO, HEROKU_APP_NAME
 # -- Constants -- #
 IS_SELECTED_DIFFERENT_BRANCH = (
