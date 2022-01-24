@@ -15,6 +15,7 @@ SESSION = os.getenv("SESSION")
 HNDLR = list(os.getenv("HNDLR").split())
 SUDO_USERS = list(map(int, os.getenv("SUDO_USERS").split()))
 HEROKU_API_KEY = os.getenv("HEROKU_API_KEY", None)
+HEROKU_APP_NAME = os.getenv("HEROKU_APP_NAME", None)
 OFFICIAL_UPSTREAM_REPO = os.getenv("OFFICIAL_UPSTREAM_REPO", "https://github.com/vaibhavchandra13/VcUserBot")
 
 contact_filter = filters.create(
