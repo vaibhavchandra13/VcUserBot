@@ -2,8 +2,6 @@ from pyrogram import Client, emoji, filters
 from config import HNDLR, SUDO_USERS
 from pyrogram.types import Message
 import os, glob
- 
-dir = 'path/to/dir'
 
 
 downloads = "./Downloads"
