@@ -23,6 +23,5 @@ contact_filter = filters.create(
     or message.outgoing
 )
 
-bot = Client(SESSION, API_ID, API_HASH)
-call_py = PyTgCalls(bot).start()
-
+bot = Client(SESSION, API_ID, API_HASH, plugins=dict(root="VcUserBot"))
+call_py = PyTgCalls(bot)
