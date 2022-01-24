@@ -23,4 +23,3 @@ contact_filter = filters.create(
 
 bot = Client(SESSION, API_ID, API_HASH, plugins=dict(root="VcUserBot"))
 call_py = PyTgCalls(bot)
-
