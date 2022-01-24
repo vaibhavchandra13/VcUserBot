@@ -30,6 +30,10 @@
             "description": "Your api key of heroku",
             "required": true
         },
+        "HEROKU_APP_NAME": {
+            "description": "Your app name of heroku",
+            "required": true
+        },
         "SUDO_USERS": {
             "description": "User ID list user counts as admin everywhere(separator using space)",
             "required": false
