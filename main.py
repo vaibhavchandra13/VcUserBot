@@ -6,7 +6,7 @@ from config import call_py
 
 
 async def main():
-    await call_py.start()
+    await call_py.run()
     print(
         """
     ------------------
