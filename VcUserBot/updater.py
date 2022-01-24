@@ -1,6 +1,3 @@
-"""Update User / Bot code
-Syntax: .update"""
-
 import asyncio
 import os
 import git
@@ -79,5 +76,4 @@ async def restart(client, message):
     await client.restart()
     await message.edit(
         "restarted! "
-        f"do `{COMMAND_HAND_LER}alive` to check if I am online?"
     )
