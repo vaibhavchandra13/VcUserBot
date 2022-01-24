@@ -1,8 +1,12 @@
 import asyncio
-import os
+
 from pytgcalls import idle
 
+from config import call_py
+
+
 async def main():
+    await call_py.start()
     print(
         """
     ------------------
@@ -10,6 +14,7 @@ async def main():
     ------------------
 """
     )
+    await idle()
 
 
 loop = asyncio.get_event_loop()
