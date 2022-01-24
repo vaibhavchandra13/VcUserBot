@@ -11,20 +11,24 @@
     "env": {
         "SESSION": {
             "description": "Pyrogram String Session",
-            "required": false
+            "required": true
         },
         "API_ID": {
             "description": "Your api id from my.telegram.org/apps",
-            "required": false
+            "required": true
         },
         "HNDLR": {
             "description": "Set handler",
-            "required": false,
-            "value": ""
+            "required": true,
+            "value": ". / ?"
         },
         "API_HASH": {
             "description": "Your api hash from my.telegram.org/apps",
-            "required": false
+            "required": true
+        },
+        "HEROKU_API_KEY": {
+            "description": "Your api key of heroku",
+            "required": true
         },
         "SUDO_USERS": {
             "description": "User ID list user counts as admin everywhere(separator using space)",
