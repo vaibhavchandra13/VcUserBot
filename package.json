@@ -1,0 +1,10 @@
+{
+  "name": "wolvevcub",
+  "version": "0.2.0",
+  "description": "vc ub tg",
+  "engines": {
+    "node": "4.0.0"
+  },
+  "author": "Vaibhav Chandra",
+  "license": "MIT"
+}
